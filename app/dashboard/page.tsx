@@ -3,6 +3,7 @@ import { MetricCard } from '@/components/metric-card';
 import { RiskMap } from '@/components/risk-map';
 import { api } from '@/services/api';
 import { AlertCircle, Clock, Shield } from 'lucide-react';
+import { ExportButton } from '@/components/export-button';
 
 export default async function DashboardPage() {
   const metrics = await api.getMetrics();
@@ -32,8 +33,11 @@ export default async function DashboardPage() {
                 </div>
               </div>
             </div>
-            <div className="px-4 py-3 rounded-lg bg-slate-900/5 border border-slate-200">
-              <Shield size={32} className="text-slate-700" />
+            <div className="flex items-center gap-4">
+              <ExportButton metrics={metrics} locations={locations} />
+              <div className="px-4 py-3 rounded-lg bg-slate-900/5 border border-slate-200">
+                <Shield size={32} className="text-slate-700" />
+              </div>
             </div>
           </div>
         </div>

@@ -107,10 +107,10 @@ export function getMockValidationLayers(): ValidationLayer[] {
     {
       id: 'drone-1',
       name: 'Drone Feed Analysis',
-      status: 'active',
+      status: 'alert',
       dataPoints: 89,
-      lastUpdate: new Date(Date.now() - 15 * 60000),
-      threatLevel: 'medium',
+      lastUpdate: new Date(Date.now() - 3 * 60000),
+      threatLevel: 'high',
     },
   ];
 }
@@ -165,14 +165,20 @@ export function getMockIoTDevices(): IoTDevice[] {
 }
 
 export function getMockImpactData(): ImpactData[] {
-  return [
-    { date: 'Jan', incidents: 8, area: 245, severity: 65 },
-    { date: 'Feb', incidents: 12, area: 389, severity: 78 },
-    { date: 'Mar', incidents: 15, area: 512, severity: 85 },
-    { date: 'Apr', incidents: 11, area: 378, severity: 72 },
-    { date: 'May', incidents: 18, area: 645, severity: 92 },
-    { date: 'Jun', incidents: 22, area: 756, severity: 88 },
-  ];
+  const data: ImpactData[] = [];
+  const now = new Date();
+  const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  
+  for (let i = 5; i >= 0; i--) {
+    const d = new Date(now.getFullYear(), now.getMonth() - i, 1);
+    data.push({
+      date: months[d.getMonth()],
+      incidents: Math.floor(Math.random() * 15) + 8,
+      area: Math.floor(Math.random() * 500) + 245,
+      severity: Math.floor(Math.random() * 40) + 50,
+    });
+  }
+  return data;
 }
 
 export function getMockSystemStatus(): SystemStatus {

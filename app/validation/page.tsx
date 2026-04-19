@@ -66,9 +66,14 @@ export default async function ValidationPage() {
             </div>
           </div>
           {isFireConfirmed && (
-            <div className="bg-red-600 text-white px-6 py-2 rounded-lg font-bold animate-bounce cursor-pointer hover:bg-red-700">
-              DISPATCH EMERGENCY
-            </div>
+            <a 
+              href="https://web.whatsapp.com/send?phone=919876543210&text=URGENT%20SOS%20ALERT:%20Fire%20confirmed%20by%20satellite,%20drone,%20and%20IoT%20fusion.%20Immediate%20response%20required." 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="bg-red-600 text-white px-6 py-2 rounded-lg font-bold animate-bounce cursor-pointer hover:bg-red-700 block text-center"
+            >
+              🚨 SOS ALERT: DISPATCH VIA WHATSAPP
+            </a>
           )}
         </div>
 

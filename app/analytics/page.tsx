@@ -3,6 +3,7 @@ import { api } from '@/services/api';
 import { Card } from '@/components/ui/card';
 import { Download } from 'lucide-react';
 import { AnalyticsCharts } from '@/components/analytics-charts';
+import { ImpactExportButton } from '@/components/impact-export-button';
 
 export default async function AnalyticsPage() {
   const impactData = await api.getImpactData();
@@ -38,10 +39,7 @@ export default async function AnalyticsPage() {
               Historical fire incident analysis and trend forecasting
             </p>
           </div>
-          <button className="flex items-center gap-2 px-4 py-2 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors">
-            <Download size={18} />
-            <span>Export Report</span>
-          </button>
+          <ImpactExportButton impactData={impactData} />
         </div>
 
         {/* Summary Cards */}
